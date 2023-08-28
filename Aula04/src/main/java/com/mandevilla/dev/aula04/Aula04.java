@@ -1,6 +1,7 @@
 package com.mandevilla.dev.aula04;
 
 import com.mandevilla.dev.aula04.Questoes.PrimeiraQuestao;
+import com.mandevilla.dev.aula04.Questoes.SegundaQuestao;
 import java.util.Scanner;
 
 /**
@@ -25,6 +26,12 @@ public class Aula04 {
                     case 1 -> {
                         var primeiraQuestao = new PrimeiraQuestao();
                         primeiraQuestao.Executar();
+                        return;
+                    }
+                    case 2 -> {
+                        var segundaQuestao = new SegundaQuestao();
+                        segundaQuestao.Executar();
+                        return;
                     }
                     default -> { 
                         System.out.println("Alternativa não implementada! Tente novamente.\n"); 
