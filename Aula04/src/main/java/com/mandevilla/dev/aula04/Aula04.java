@@ -2,11 +2,12 @@ package com.mandevilla.dev.aula04;
 
 import com.mandevilla.dev.aula04.Questoes.PrimeiraQuestao;
 import com.mandevilla.dev.aula04.Questoes.SegundaQuestao;
+import com.mandevilla.dev.aula04.Questoes.TerceiraQuestao;
 import java.util.Scanner;
 
 /**
- *
- * @author alunoifto
+ * @author Juan Felipe Alves Flores
+ * @since 2023-08-28
  */
 public class Aula04 {
 
@@ -31,6 +32,11 @@ public class Aula04 {
                     case 2 -> {
                         var segundaQuestao = new SegundaQuestao();
                         segundaQuestao.Executar();
+                        return;
+                    }
+                    case 3 -> {
+                        var terceiraQuestao = new TerceiraQuestao();
+                        terceiraQuestao.Executar();
                         return;
                     }
                     default -> { 

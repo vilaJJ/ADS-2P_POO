@@ -12,6 +12,10 @@ package com.mandevilla.dev.aula04.Questoes;
 
 import java.util.Scanner;
 
+/**
+ * @author Juan Felipe Alves Flores
+ * @since 2023-08-28
+ */
 public class SegundaQuestao {
     private double calculadora(int primeiroValor, int segundoValor, char operador) throws Exception{
         double resultado;

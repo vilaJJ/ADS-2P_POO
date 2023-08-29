@@ -10,6 +10,10 @@ package com.mandevilla.dev.aula04.Questoes;
 
 import java.util.Scanner;
 
+/**
+ * @author Juan Felipe Alves Flores
+ * @since 2023-08-28
+ */
 public class PrimeiraQuestao {
     private class Pessoa{
         private final String nome;
