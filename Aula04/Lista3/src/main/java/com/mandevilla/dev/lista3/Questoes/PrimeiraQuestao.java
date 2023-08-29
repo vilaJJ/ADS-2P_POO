@@ -6,7 +6,7 @@ Nacional de Habilitação (CNH), escreva no console: “Você pode tirar a CNH!�
 caso contrário, se a pessoa tiver a idade menor que 18 anos, escreva a mensagem 
 no console: “Você ainda não pode tirar a CHN, tenha paciência!”. 
  */
-package com.mandevilla.dev.aula04.Questoes;
+package com.mandevilla.dev.lista3.Questoes;
 
 import java.util.Scanner;
 

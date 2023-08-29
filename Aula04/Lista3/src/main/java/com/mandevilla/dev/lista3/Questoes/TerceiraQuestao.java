@@ -4,7 +4,7 @@ iguais ou diferentes, caso sejam diferentes, verificar se o primeiro valor é
 maior ou menor que o segundo valor. Escreva no console o valor maior e o valor 
 menor ou se são iguais. 
  */
-package com.mandevilla.dev.aula04.Questoes;
+package com.mandevilla.dev.lista3.Questoes;
 
 import java.util.Scanner;
 

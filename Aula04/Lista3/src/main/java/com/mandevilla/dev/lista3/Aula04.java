@@ -1,8 +1,8 @@
-package com.mandevilla.dev.aula04;
+package com.mandevilla.dev.lista3;
 
-import com.mandevilla.dev.aula04.Questoes.PrimeiraQuestao;
-import com.mandevilla.dev.aula04.Questoes.SegundaQuestao;
-import com.mandevilla.dev.aula04.Questoes.TerceiraQuestao;
+import com.mandevilla.dev.lista3.Questoes.PrimeiraQuestao;
+import com.mandevilla.dev.lista3.Questoes.SegundaQuestao;
+import com.mandevilla.dev.lista3.Questoes.TerceiraQuestao;
 import java.util.Scanner;
 
 /**

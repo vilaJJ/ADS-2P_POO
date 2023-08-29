@@ -8,7 +8,7 @@ função calculadora vai ser responsável por realizar a operação do primeiro 
 segundo valor e utilizar o valor caracter apropriado para a operação e mostre o 
 resultado no console.
  */
-package com.mandevilla.dev.aula04.Questoes;
+package com.mandevilla.dev.lista3.Questoes;
 
 import java.util.Scanner;
 
