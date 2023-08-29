@@ -3,13 +3,14 @@ package com.mandevilla.dev.lista3;
 import com.mandevilla.dev.lista3.Questoes.PrimeiraQuestao;
 import com.mandevilla.dev.lista3.Questoes.SegundaQuestao;
 import com.mandevilla.dev.lista3.Questoes.TerceiraQuestao;
+import com.mandevilla.dev.lista3.Questoes.QuartaQuestao;
 import java.util.Scanner;
 
 /**
  * @author Juan Felipe Alves Flores
  * @since 2023-08-28
  */
-public class Aula04 {
+public class Lista3 {
 
     public static void main(String[] args) {
         var scanner = new Scanner(System.in);
@@ -39,6 +40,11 @@ public class Aula04 {
                         terceiraQuestao.Executar();
                         return;
                     }
+                    case 4 -> {
+                        var quartaQuestao = new QuartaQuestao();
+                        quartaQuestao.Executar();
+                        return;
+                    }
                     default -> { 
                         System.out.println("Alternativa não implementada! Tente novamente.\n"); 
                     }
@@ -46,7 +52,7 @@ public class Aula04 {
             }
         }
         catch (Exception ex){
-            System.out.println("Erro na execução do programa.");
+            System.out.println(String.format("Erro na execução do programa. %s", ex.getMessage()));
         }
     }
 }
