@@ -5,6 +5,7 @@ import com.mandevilla.dev.lista3.Questoes.SegundaQuestao;
 import com.mandevilla.dev.lista3.Questoes.TerceiraQuestao;
 import com.mandevilla.dev.lista3.Questoes.QuartaQuestao;
 import com.mandevilla.dev.lista3.Questoes.QuintaQuestao;
+import com.mandevilla.dev.lista3.Questoes.SextaQuestao;
 import java.util.Scanner;
 
 /**
@@ -49,6 +50,11 @@ public class Lista3 {
                     case 5 -> {
                         var quintaQuestao = new QuintaQuestao();
                         quintaQuestao.Executar();
+                        return;
+                    }
+                    case 6 -> {
+                        var sextaQuestao = new SextaQuestao();
+                        sextaQuestao.Executar();
                         return;
                     }
                     default -> { 
