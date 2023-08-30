@@ -1,6 +1,6 @@
 /*
 4. Faça um algoritmo em JAVA para calcular três notas de um aluno em uma 
-disciplina e imprimir a sua média ponderada (as notas tem pesos 1, 2 e 3 
+disciplina e imprimir a sua média ponderada (as notas têm pesos 1, 2 e 3 
 respectivamente). Caso a média do aluno for maior que 7 (sete), escreva, no 
 console, ‘Aprovado’, caso contrário, ‘Reprovado’. Para calcular a média 
 ponderada utilize a seguinte fórmula: 

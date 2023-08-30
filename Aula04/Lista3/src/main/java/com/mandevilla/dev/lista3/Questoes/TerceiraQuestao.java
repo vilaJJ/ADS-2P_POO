@@ -1,5 +1,5 @@
 /*
- 3. Faça um algoritmo em JAVA para verificar se dois valores númericos são 
+ 3. Faça um algoritmo em JAVA para verificar se dois valores numéricos são 
 iguais ou diferentes, caso sejam diferentes, verificar se o primeiro valor é 
 maior ou menor que o segundo valor. Escreva no console o valor maior e o valor 
 menor ou se são iguais. 
@@ -53,10 +53,10 @@ public class TerceiraQuestao {
     public void Executar(){
         var scanner = new Scanner(System.in);
         
-        System.out.print("Insira o primeiro valor númerico: ");
+        System.out.print("Insira o primeiro valor numérico: ");
         var primeiroValor = scanner.nextInt();
         
-        System.out.print("Insira o segundo valor númerico: ");
+        System.out.print("Insira o segundo valor numérico: ");
         var segundoValor = scanner.nextInt();
         
         var resultado = valoresIguais(primeiroValor, segundoValor);
