@@ -15,16 +15,20 @@ public class PrimeiraQuestao {
         for (int i = 0; i < valores.length; i++) {
             media += valores[i];
         }
-        return media;
+        return media / valores.length;
     }
     
     public void Executar(){
+        System.out.println("Calculando média de 10 valores:\n");
         var scanner = new Scanner(System.in);
         
         var medias = new double[10];
         
         for(int i = 0; i < medias.length; i++){
-            System.out.print("Insira um valor númerico: ");
+            System.out.print(String.format(
+                    "Insira um %d° valor númerico: ", 
+                    i + 1
+            ));
             medias[i] = scanner.nextDouble();
         }
         

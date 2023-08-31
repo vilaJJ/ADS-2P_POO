@@ -1,5 +1,6 @@
 package com.mandevilla.dev.arrays_lista4;
 
+import com.mandevilla.dev.arrays_lista4.Questoes.PrimeiraQuestao;
 import java.util.Scanner;
 
 /**
@@ -18,6 +19,10 @@ public class Arrays_Lista4 {
 
                 switch(questao){
                     case 0:
+                        return;
+                    case 1:
+                        var primeiraQuestao = new PrimeiraQuestao();
+                        primeiraQuestao.Executar();
                         return;
                     default:
                         System.out.println("Alternativa não implementada! Tente novamente.\n");
