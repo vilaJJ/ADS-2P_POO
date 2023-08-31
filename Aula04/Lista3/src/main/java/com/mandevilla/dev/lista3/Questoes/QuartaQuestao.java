@@ -27,7 +27,7 @@ public class QuartaQuestao {
         private final double somaPesos = peso1 + peso2 + peso3;
         
         private boolean notaInvalida(double nota){
-            return nota < 0 && nota > 10;
+            return nota < 0 || nota > 10;
         }
         
         public double getMedia(){
