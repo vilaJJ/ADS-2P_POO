@@ -26,7 +26,7 @@ public class PrimeiraQuestao {
         
         for(int i = 0; i < medias.length; i++){
             System.out.print(String.format(
-                    "Insira um %d° valor númerico: ", 
+                    "Insira um %d° valor numérico: ", 
                     i + 1
             ));
             medias[i] = scanner.nextDouble();
