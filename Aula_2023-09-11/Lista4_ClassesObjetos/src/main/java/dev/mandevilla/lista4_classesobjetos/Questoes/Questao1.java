@@ -1,9 +1,9 @@
 /*
 1. Faça um algoritmo em Java para calcular o salário de um funcionário e aumentá-lo em 15%. Após o aumento, desconte 8% de impostos. Escreva no navegador o salário inicial, o salário com o aumento e o salário final. Dica: utilize Classe, métodos e objetos. 
  */
-package dev.mandevilla.lista4_classesobjetos.Questao1;
+package dev.mandevilla.lista4_classesobjetos.Questoes;
 
-import dev.mandevilla.lista4_classesobjetos.Questao1.Classes.Funcionario;
+import dev.mandevilla.lista4_classesobjetos.Classes.Funcionario;
 
 /**
  * @author Juan Felipe Alves Flores
