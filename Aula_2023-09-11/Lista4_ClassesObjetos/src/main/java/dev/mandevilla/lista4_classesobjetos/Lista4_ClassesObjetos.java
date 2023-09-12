@@ -6,6 +6,8 @@ Atividade voltada para praticar a criação de classes, métodos e propriedades,
 package dev.mandevilla.lista4_classesobjetos;
 
 import dev.mandevilla.lista4_classesobjetos.Questoes.Questao1;
+import dev.mandevilla.lista4_classesobjetos.Questoes.Questao2;
+import dev.mandevilla.lista4_classesobjetos.Questoes.Questao3;
 import java.util.Scanner;
 
 /**
@@ -30,6 +32,14 @@ public class Lista4_ClassesObjetos {
                     case 1:
                         Questao1.executar();
                         return;
+                    case 2:
+                        Questao2.executar();
+                        return;
+                    case 3:
+                        Questao3.executar();
+                        return;
+                    default:
+                        System.out.println("Alternativa não implementada! Tente novamente.\n");
                 }
             }
         }

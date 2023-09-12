@@ -5,10 +5,22 @@ Escreva no navegador as quantidades (em quilos) de queijo, presunto e carne nece
  */
 package dev.mandevilla.lista4_classesobjetos.Questoes;
 
+import dev.mandevilla.lista4_classesobjetos.Classes.LanchoneteGostosura;
+import java.util.Scanner;
+
 /**
  * @author Juan Felipe Alves Flores
  * @since 2023-09-11
  */
 public class Questao2 {
-    
+    public static void executar(){
+        var scanner = new Scanner(System.in);
+        
+        System.out.print("Insira a quantidade de sanduíches: ");
+        var qntdSanduiches = scanner.nextInt();
+        
+        var lanchonete = new LanchoneteGostosura(qntdSanduiches);
+        
+        System.out.println(lanchonete.getRelatorioPeso());        
+    }
 }
