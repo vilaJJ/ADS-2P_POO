@@ -7,7 +7,7 @@ Dica: utilize Classe, métodos e objetos.
 */
 package dev.mandevilla.lista4_classesobjetos.Questoes;
 
-import dev.mandevilla.lista4_classesobjetos.Classes.TermometroCelsius;
+import dev.mandevilla.lista4_classesobjetos.Classes.Questao3.TermometroCelsius;
 import java.util.Scanner;
 
 /**

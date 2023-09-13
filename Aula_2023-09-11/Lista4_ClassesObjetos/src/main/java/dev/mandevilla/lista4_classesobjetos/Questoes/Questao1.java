@@ -3,7 +3,7 @@
  */
 package dev.mandevilla.lista4_classesobjetos.Questoes;
 
-import dev.mandevilla.lista4_classesobjetos.Classes.Funcionario;
+import dev.mandevilla.lista4_classesobjetos.Classes.Questao1.Funcionario;
 
 /**
  * @author Juan Felipe Alves Flores

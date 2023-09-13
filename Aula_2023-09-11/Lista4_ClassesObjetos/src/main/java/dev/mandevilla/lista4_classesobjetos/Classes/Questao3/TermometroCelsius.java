@@ -5,7 +5,7 @@ A fórmula para converter de Celsius (C) para Fahrenheit (F) é: F = 1.8C + 32
 
 Dica: utilize Classe, métodos e objetos. 
 */
-package dev.mandevilla.lista4_classesobjetos.Classes;
+package dev.mandevilla.lista4_classesobjetos.Classes.Questao3;
 
 /**
  * @author Juan Felipe Alves Flores

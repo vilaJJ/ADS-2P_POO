@@ -5,7 +5,7 @@ Escreva no navegador as quantidades (em quilos) de queijo, presunto e carne nece
  */
 package dev.mandevilla.lista4_classesobjetos.Questoes;
 
-import dev.mandevilla.lista4_classesobjetos.Classes.LanchoneteGostosura;
+import dev.mandevilla.lista4_classesobjetos.Classes.Questao2.LanchoneteGostosura;
 import java.util.Scanner;
 
 /**
