@@ -8,6 +8,8 @@ package dev.mandevilla.lista4_classesobjetos;
 import dev.mandevilla.lista4_classesobjetos.Questoes.Questao1;
 import dev.mandevilla.lista4_classesobjetos.Questoes.Questao2;
 import dev.mandevilla.lista4_classesobjetos.Questoes.Questao3;
+import dev.mandevilla.lista4_classesobjetos.Questoes.Questao4;
+import dev.mandevilla.lista4_classesobjetos.Questoes.Questao5;
 import java.util.Scanner;
 
 /**
@@ -37,6 +39,12 @@ public class Lista4_ClassesObjetos {
                         return;
                     case 3:
                         Questao3.executar();
+                        return;
+                    case 4:
+                        Questao4.executar();
+                        return;
+                    case 5:
+                        Questao5.executar();
                         return;
                     default:
                         System.out.println("Alternativa não implementada! Tente novamente.\n");

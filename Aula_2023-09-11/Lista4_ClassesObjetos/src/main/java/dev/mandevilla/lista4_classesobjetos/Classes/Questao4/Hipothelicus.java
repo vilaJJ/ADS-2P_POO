@@ -60,11 +60,11 @@ public class Hipothelicus {
     public String getFuncRelatorio(FuncionarioHipothelicus func){
         var relatorio = String.format(
                 "---------------------------------------------" +
-                "Nome: %s" +
+                "\nNome: %s" +
                 "\nSalário bruto: R$ %.2f" +
                 "\nDesconto (impostos): R$ %.2f" +
                 "\n\nSalário líquido: R$ %.2f" +
-                "---------------------------------------------",
+                "\n---------------------------------------------",
                 func.getNome(),
                 getFuncSalarioBruto(func),
                 getFuncSalarioDesconto(func),
