@@ -42,4 +42,51 @@ public class CalculoIRRF {
     public float getTaxa() {
         return taxa;
     }
+    
+    private boolean hasValidMinValue(){
+        return minValue > 0;
+    }
+    private boolean hasValidMaxValue(){
+        return maxValue > 0;
+    }
+    
+    public static CalculoIRRF getCalculoIRRF(float salario){
+        float minValue;
+        float maxValue;
+        float aliquota;
+        float taxa;
+        
+        if (salario <= 1_787.77) {
+            minValue = 0.00f;
+            maxValue = 1_787.77f;
+            aliquota = 0.0f;
+            taxa = 0.00f;
+        }
+        else if (salario <= 2_679.29) {
+            minValue = 1_787.78f;
+            maxValue = 2_679.29f;
+            aliquota = 7.5f;
+            taxa = 134.08f;
+        }
+        else if (salario <= 3_572.43) {
+            minValue = 2_679.30f;
+            maxValue = 3_572.43f;
+            aliquota = 15.0f;
+            taxa = 335.03f;
+        }
+        else if (salario <= 4_463.81) {
+            minValue = 3_572.43f;
+            maxValue = 4_463.82f;
+            aliquota = 22.5f;
+            taxa = 602_96f;
+        }
+        else{
+            minValue = 4_463.83f;
+            maxValue = 0.00f;
+            aliquota = 27.5f;
+            taxa = 826.15f;
+        }
+        
+        return new CalculoIRRF(minValue, maxValue, aliquota, taxa);
+    }
 }

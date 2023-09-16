@@ -18,5 +18,19 @@ package dev.mandevilla.lista4_classesobjetos.Classes.Questao6;
  * @since 2023-09-14
  */
 public class ReceitaFederal {
+    private final String nome;
+    private final float rendaMensal;
+    private final CalculoIRRF calculoIRRF;
     
+    public ReceitaFederal(String nome, float rendaMensal) throws Exception{
+        if (rendaMensal <= 0) {
+            var messageError = "Erro: Não é possível calcular o IRRF com um salário mensal menor ou igual a zero.";
+            System.out.println(messageError);
+            throw new Exception(messageError);
+        }
+        
+        this.nome = nome;
+        this.rendaMensal = rendaMensal;
+        calculoIRRF = CalculoIRRF.getCalculoIRRF(rendaMensal);
+    }
 }
