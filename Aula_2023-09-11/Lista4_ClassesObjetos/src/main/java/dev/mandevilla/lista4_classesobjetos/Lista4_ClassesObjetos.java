@@ -1,6 +1,6 @@
 /*
 Lista 4 de Programação Orientada a Objetos.
-Atividade voltada para praticar a criação de classes, métodos e propriedades, e instânciar.
+Atividade voltada para praticar a criação de classes, métodos e propriedades, e instanciar.
  */
 
 package dev.mandevilla.lista4_classesobjetos;
@@ -10,6 +10,7 @@ import dev.mandevilla.lista4_classesobjetos.Questoes.Questao2;
 import dev.mandevilla.lista4_classesobjetos.Questoes.Questao3;
 import dev.mandevilla.lista4_classesobjetos.Questoes.Questao4;
 import dev.mandevilla.lista4_classesobjetos.Questoes.Questao5;
+import dev.mandevilla.lista4_classesobjetos.Questoes.Questao6;
 import java.util.Scanner;
 
 /**
@@ -45,6 +46,9 @@ public class Lista4_ClassesObjetos {
                         return;
                     case 5:
                         Questao5.executar();
+                        return;
+                    case 6:
+                        Questao6.executar();
                         return;
                     default:
                         System.out.println("Alternativa não implementada! Tente novamente.\n");

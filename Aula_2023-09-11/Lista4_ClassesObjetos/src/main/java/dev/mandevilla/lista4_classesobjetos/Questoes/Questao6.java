@@ -13,12 +13,25 @@ Acima de 4.463,81                       27,5                    826,15
  */
 package dev.mandevilla.lista4_classesobjetos.Questoes;
 
+import dev.mandevilla.lista4_classesobjetos.Classes.Questao6.ReceitaFederal;
+import java.util.Scanner;
+
 /**
  * @author Juan Felipe Alves Flores
  * @since 2023-09-14
  */
 public class Questao6 {
-    public static void executar(){
+    public static void executar() throws Exception{
+        var scanner = new Scanner(System.in);
         
+        System.out.print("Insira seu nome: ");
+        var nome = scanner.nextLine();
+        
+        System.out.print("Insira seu rendimento mensal bruto: ");
+        var rendaMensal = scanner.nextFloat();
+        
+        var rf = new ReceitaFederal(nome, rendaMensal);
+        
+        System.out.println(rf.getRelatorioMensal());
     }
 }

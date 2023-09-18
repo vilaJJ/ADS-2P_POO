@@ -73,4 +73,3 @@ public class Hipothelicus {
         return relatorio;
     }
 }
-

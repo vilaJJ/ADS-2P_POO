@@ -26,11 +26,26 @@ public class ReceitaFederal {
         if (rendaMensal <= 0) {
             var messageError = "Erro: Não é possível calcular o IRRF com um salário mensal menor ou igual a zero.";
             System.out.println(messageError);
-            throw new Exception(messageError);
+            throw new Exception(messageError);            
         }
         
         this.nome = nome;
         this.rendaMensal = rendaMensal;
-        calculoIRRF = CalculoIRRF.getCalculoIRRF(rendaMensal);
+        calculoIRRF = new CalculoIRRF(rendaMensal);
+    }
+    
+    public String getRelatorioMensal(){
+        var relatorio = String.format(
+                "---------------------------------------------------------\n" +
+                "Relatório Mensal - IRRF\n\n" +
+                "Nome: %s\n" +
+                "Renda mensal: R$ %.2f\n\n" +
+                "Valor a pagar de IRRF: R$ %.2f\n" + 
+                "---------------------------------------------------------\n",
+                nome,
+                rendaMensal,
+                calculoIRRF.getTaxaMensal()
+        );
+        return relatorio;
     }
 }
