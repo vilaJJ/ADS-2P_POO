@@ -1,14 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dev.mandevilla.bancomonetario.ContaBancaria;
 
 import dev.mandevilla.bancomonetario.BancoMonetario;
 
 /**
- *
- * @author 202312160013@ifto.local
+ * @author Juan Felipe Alves Flores
+ * @since 2023-09-18
  */
 public class ContaBancaria {
     private final int numeroConta;
