@@ -22,13 +22,13 @@ public class Banco {
         contasBancarias = new ArrayList();
     }
     
-    public boolean existeConta(int numeroConta){
-        for (ContaBancaria contasBancaria : contasBancarias) {
-            if (contasBancaria.getNumeroConta() == numeroConta) {
-                return true;
+    private ContaBancaria existeConta(int numeroConta){
+        for (ContaBancaria contaBancaria : contasBancarias) {
+            if (contaBancaria.getNumeroConta() == numeroConta) {
+                return contaBancaria;
             }
         }
-        return false;
+        return null;
     }
     
     public void criarContaBancaria() throws Exception{
@@ -38,12 +38,13 @@ public class Banco {
         System.out.print("Insira o número da conta (apenas números): ");
         var numeroConta = scanner.nextInt();
         
-        if (existeConta(numeroConta)) {
-            informacaoBanco("O número de conta já existe. Tente novamente com outro valor.");
+        if (existeConta(numeroConta) != null) {
+            informacaoBanco("O número de conta já existe. Tente novamente com outro valor.\n");
             return;
         }
         
         System.out.print("Insira o nome do titular: ");
+        scanner.nextLine(); // Consumir \n
         var nomeTitular = scanner.nextLine();
         
         ContaBancaria conta;
@@ -65,6 +66,24 @@ public class Banco {
         System.out.println("\nConta criada com sucesso!");
     }
     
+    public void acessarContaBancaria() throws Exception{
+        var scanner = new Scanner(System.in);
+        
+        System.out.print("Insira o número da conta: ");
+        var numeroConta = scanner.nextInt();
+        
+        var conta = existeConta(numeroConta);
+        if (conta != null) {
+            conta.controlarConta();
+            return;
+        }
+        
+        informacaoBanco(String.format(
+                "Não foi encontrada uma conta com o número '%d'. Tente novamente.\n", 
+                numeroConta
+        ));
+    }
+    
     // taxaSaque - getter and setter
     public float getTaxaSaque() {
         return taxaSaque;
@@ -73,7 +92,7 @@ public class Banco {
         this.taxaSaque = taxaSaque;
     }
     
-    public String informacaoBanco(String value){
-        return String.format("Banco Monetário informa: %s", value);
+    public void informacaoBanco(String value){
+        System.out.println(String.format("Banco Monetário informa: %s", value)); 
     }
 }

@@ -1,6 +1,9 @@
 package dev.mandevilla.bancomonetario.ContaBancaria;
 
 import dev.mandevilla.bancomonetario.Banco.Banco;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author Juan Felipe Alves Flores
@@ -11,12 +14,17 @@ public class ContaBancaria {
     private final int numeroConta;
     private String nomeTitular;
     private float saldo;
+    private List<String> extratos;
+    private final Scanner scanner;
     
     public ContaBancaria(Banco banco, int numeroConta, String nome){
         this.banco = banco;
         this.numeroConta = numeroConta;
         this.nomeTitular = nome;
         saldo = 0.00f;
+        extratos = new ArrayList();
+        
+        scanner = new Scanner(System.in);
     }
     public ContaBancaria(Banco banco, int numeroConta, String nome, float saldoInicial) throws Exception{
         if (saldoInicial < 0) {
@@ -28,6 +36,44 @@ public class ContaBancaria {
         this.numeroConta = numeroConta;
         this.nomeTitular = nome;
         saldo = saldoInicial;
+        extratos = new ArrayList();
+        
+        extratos.add(String.format(
+                "Operação: Depósito\nValor: R$ %.2f\nSaldo: R$ %.2f",
+                saldoInicial, saldo
+        ));
+        
+        scanner = new Scanner(System.in);
+    }
+    
+    // Método de acesso a conta
+    public void controlarConta() throws Exception{      
+        System.out.println(String.format("\nOlá, %s.\n", nomeTitular));
+        while(true){
+            System.out.println("\nInsira a operação desejada:\n");
+            System.out.println("[Código] -> Operação \n");
+            
+            System.out.println("[1] -> Informações gerais");
+            System.out.println("[2] -> Obter extrato");
+            System.out.println("[3] -> Movimentar dinheiro");
+            System.out.println("[4] -> Configurações da conta");
+            System.out.println("[0] -> Encerrar atendimento");
+            
+            System.out.print("\nInsira o código da operação: ");
+            var codigo = scanner.nextInt();
+            
+            switch(codigo){
+                case 0 -> {
+                    System.out.println("Atendimento encerrado. Tenha um bom dia!");
+                    return;
+                }
+                case 1 -> System.out.println(obterInformacoesGerais());
+                case 2 -> imprimirExtrato();
+                case 3 -> realizarMovimentacoes();
+                case 4 -> configurarConta();
+                default -> banco.informacaoBanco("Operação inválida, tente novamente.\n");
+            }
+        }
     }
     
     public int getNumeroConta() {
@@ -66,6 +112,19 @@ public class ContaBancaria {
         System.out.println(String.format("Novo nome: %s", nomeTitular));
     }
     
+    public void imprimirExtrato(){
+        System.out.println("-----------------------------------------------------");
+        if (extratos.isEmpty()) {
+            System.out.println("Sem operações para exibir em extrato.");
+        }
+        else{
+            for(var extrato : extratos){
+                System.out.println(String.format("%s\n", extrato));
+            }
+        }
+        System.out.println("-----------------------------------------------------");
+    }
+    
     public float obterSaldo(){
         return saldo;
     }
@@ -80,6 +139,11 @@ public class ContaBancaria {
         
         System.out.println("\nDepósito realizado com sucesso.");
         System.out.println(String.format("Novo saldo: R$ %.2f", obterSaldo()));
+        
+        extratos.add(String.format(
+                "Operação: Depósito\nValor: R$ %.2f\nSaldo: R$ %.2f",
+                value, saldo
+        ));
     }
     
     public void realizarSaque(float value) throws Exception{
@@ -104,6 +168,61 @@ public class ContaBancaria {
         
         if (saldo < 0) {
             banco.informacaoBanco("\nSua conta está negativa, entrou no Cheque Especial. Não será possível realizar saques até que o saldo esteja positivo.");
+        }
+        
+        extratos.add(String.format(
+                "Operação: Saque\nValor: R$ %.2f\nSaldo: R$ %.2f",
+                value, saldo
+        ));
+    }
+    
+    // Private methods
+    private void realizarMovimentacoes() throws Exception{
+        System.out.println("Insira a operação de movimentação:\n");
+        
+        System.out.println("[1] -> Depósito");
+        System.out.println("[2] -> Saque");
+        System.out.println("[0] -> Retornar");
+        
+        System.out.print("\nInsira o código da operação: ");
+        var codigo = scanner.nextInt();
+        
+        switch (codigo) {
+            case 0 -> {
+                break;
+            }
+            case 1 -> {
+                System.out.print("Insira o valor de depósito: R$ ");
+                var value = scanner.nextFloat();
+                realizarDeposito(value);
+            }
+            case 2 -> {
+                System.out.print("Insira o valor de saque: R$ ");
+                var value = scanner.nextFloat();
+                realizarSaque(value);
+            }
+            default -> banco.informacaoBanco("Operação inválida, tente novamente.");
+        }
+    }
+    
+    private void configurarConta(){
+        System.out.println("Insira a operação de configuração:\n");
+        
+        System.out.println("[1] -> Modificar nome");
+        System.out.println("[0] -> Retornar");
+        
+        System.out.print("\nInsira o código da operação: ");
+        var codigo = scanner.nextInt();
+        
+        switch (codigo){
+            case 1 -> {
+                System.out.print("Insira o novo nome: ");
+                scanner.nextLine(); // Consumir \n
+                var value = scanner.nextLine();
+                
+                renomearNomeTitular(value);
+            }
+            default -> banco.informacaoBanco("Operação inválida, tente novamente.");
         }
     }
 }
