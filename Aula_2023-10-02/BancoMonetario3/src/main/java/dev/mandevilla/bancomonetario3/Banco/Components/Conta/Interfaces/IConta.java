@@ -1,12 +1,12 @@
 package dev.mandevilla.bancomonetario3.Banco.Components.Conta.Interfaces;
 
 public interface IConta {
-    String obterSaldo();
-    String obterInformacoesGerais();
-    String obterExtrato();
+    String getSaldo();
+    String getInformacoesGerais();
+    String getExtrato();
     
-    boolean realizarTransferencia(String cpf_cnpj_destinatario, String numeroConta_destinatario, float value);
+    boolean setTransferencia(String cpf_cnpj_destinatario, String numeroConta_destinatario, float value);
     
-    boolean realizarDeposito(float value);
-    boolean realizarSaque(float value);
+    boolean setDeposito(float value);
+    boolean setSaque(float value);
 }

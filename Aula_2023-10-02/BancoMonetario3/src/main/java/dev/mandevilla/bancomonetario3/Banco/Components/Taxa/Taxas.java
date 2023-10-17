@@ -14,7 +14,7 @@ public class Taxas implements ITaxas {
     }
 
     @Override
-    public float obterValorTaxa(TiposTaxa tipoTaxa) {
+    public float getValorTaxa(TiposTaxa tipoTaxa) {
         float value;
 
         switch(tipoTaxa){
@@ -30,7 +30,7 @@ public class Taxas implements ITaxas {
     }
 
     @Override
-    public boolean alterarValorTaxa(TiposTaxa tipoTaxa, float value) {
+    public boolean setValorTaxa(TiposTaxa tipoTaxa, float value) {
         switch(tipoTaxa){
             case Saque -> {
                 saque = value;

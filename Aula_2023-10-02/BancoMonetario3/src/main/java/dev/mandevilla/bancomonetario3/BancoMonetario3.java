@@ -9,6 +9,6 @@ public class BancoMonetario3 {
         var banco = new Banco();
         var autoAtendimento = new AutoAtendimento(banco);
 
-        autoAtendimento.realizarAutoAtendimento();
+        autoAtendimento.startAutoAtendimento();
     }
 }

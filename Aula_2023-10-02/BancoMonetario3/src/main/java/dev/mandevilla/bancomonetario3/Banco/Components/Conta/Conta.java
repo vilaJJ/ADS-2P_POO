@@ -53,16 +53,17 @@ public class Conta implements IConta {
 
     // Métodos
     @Override
-    public String obterSaldo() {
+    public String getSaldo() {
         var saldo = String.format("Saldo atual: R$ %.2f", this.saldo);
         return saldo;
     }
     
     @Override
-    public String obterInformacoesGerais() {
+    public String getInformacoesGerais() {
         var infoGerais = new StringBuilder();
         
         var nomeProprietario = String.format("Nome do proprietário: %s\n", this.cliente.getNome());
+        var emailProprietario = String.format("Email do proprietário: %s\n", this.cliente.getEmail());
         var cpf_cnpjProprietario = String.format("CPF/CNPJ do proprietário: %s\n\n", this.cliente.getCpf_cnpj());
         var numeroConta = String.format("Número da conta: %s\n", this.numeroConta);
         var tipoConta = String.format("Tipo de conta: %s\n", this.tipoConta.name());
@@ -74,6 +75,7 @@ public class Conta implements IConta {
         infoGerais.append("Informações gerais da conta:\n\n");
 
         infoGerais.append(nomeProprietario);
+        infoGerais.append(emailProprietario);
         infoGerais.append(cpf_cnpjProprietario);
         infoGerais.append(numeroConta);
         infoGerais.append(tipoConta);
@@ -86,20 +88,20 @@ public class Conta implements IConta {
     }
 
     @Override
-    public String obterExtrato() {
+    public String getExtrato() {
         var extratos = new StringBuilder();
         
         for (var extrato : this.extratos) {
-            extratos.append(extrato.obter());
+            extratos.append(extrato.get());
         }
 
         return extratos.toString();
     }
 
     @Override
-    public boolean realizarTransferencia(String cpf_cnpj_destinatario, String numeroConta_destinatario, float value) {
-        var clienteDestinatario = banco.obterCliente(cpf_cnpj_destinatario, false);
-        var contaDestinatario = banco.obterConta(clienteDestinatario, numeroConta_destinatario, false);
+    public boolean setTransferencia(String cpf_cnpj_destinatario, String numeroConta_destinatario, float value) {
+        var clienteDestinatario = banco.getCliente(cpf_cnpj_destinatario, false);
+        var contaDestinatario = banco.getConta(clienteDestinatario, numeroConta_destinatario, false);
 
         if(contaDestinatario == null) {
             System.out.println("Transferência cancelada. Conta de destino inexistente.");
@@ -138,7 +140,7 @@ public class Conta implements IConta {
     }
 
     @Override
-    public boolean realizarDeposito(float value) {
+    public boolean setDeposito(float value) {
         if(value <= 0) {
             System.out.println("Não é possível realizar um depósito de valor negativo. Tente novamente.");
             return false;
@@ -154,7 +156,7 @@ public class Conta implements IConta {
     }
 
     @Override
-    public boolean realizarSaque(float value) {
+    public boolean setSaque(float value) {
         if(value <= 0) {
             System.out.println("Não é possível realizar um saque de valor negativo. Tente novamente.");
             return false;
@@ -164,8 +166,8 @@ public class Conta implements IConta {
             return false;
         }
 
-        var taxasBanco = banco.obterTaxas();
-        var taxaSaque = taxasBanco.obterValorTaxa(TiposTaxa.Saque);
+        var taxasBanco = banco.getTaxas();
+        var taxaSaque = taxasBanco.getValorTaxa(TiposTaxa.Saque);
 
         value += taxaSaque;
         saldo -= value + taxaSaque;

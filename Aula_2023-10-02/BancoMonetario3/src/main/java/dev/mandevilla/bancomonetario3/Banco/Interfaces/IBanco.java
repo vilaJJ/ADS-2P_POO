@@ -6,17 +6,13 @@ import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Enums.TipoConta;
 import dev.mandevilla.bancomonetario3.Banco.Components.Taxa.Taxas;
 
 public interface IBanco {
-    boolean cadastrarCliente(String cpf_cnpj, String nome, String email);
+    boolean addCliente(String cpf_cnpj, String nome, String email);
+    Cliente getCliente(String cpf_cnpj, boolean ignorarMensagens);
+
+    boolean addConta(Cliente cliente, String numeroConta, TipoConta tipoConta, float valorIncial);    
+    Conta getConta(Cliente cliente, String numeroConta, boolean ignorarMensagens);
+    int getIndiceConta(Cliente cliente, String numeroConta);
+    boolean deleteConta(Cliente cliente, String numeroConta);
     
-    boolean criarConta(Cliente cliente, String numeroConta, TipoConta tipoConta, float valorIncial);
-
-    Cliente obterCliente(String cpf_cnpj, boolean ignorarMensagens);
-
-    Conta obterConta(Cliente cliente, String numeroConta, boolean ignorarMensagens);
-
-    int indiceConta(Cliente cliente, String numeroConta);
-
-    boolean apagarConta(Cliente cliente, String numeroConta);
-    
-    Taxas obterTaxas();
+    Taxas getTaxas();
 }

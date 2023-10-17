@@ -31,12 +31,12 @@ public class Pessoa implements IPessoa {
     // Métodos
 
     @Override
-    public void modificarNome(String value) {
+    public void setNome(String value) {
         this.nome = value;
     }
 
     @Override
-    public void modificarEmail(String value) {
+    public void setEmail(String value) {
         this.email = value;
     }
 }

@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 import dev.mandevilla.bancomonetario3.Banco.Banco;
 import dev.mandevilla.bancomonetario3.Banco.Components.AutoAtendimento.Interfaces.IAutoAtendimento;
+import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Conta;
 import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Enums.TipoConta;
 
 public class AutoAtendimento implements IAutoAtendimento {
     private final Banco banco;
+    private Conta conta;
     private final Scanner scanner;
     private final String barras;
     
@@ -19,7 +21,7 @@ public class AutoAtendimento implements IAutoAtendimento {
     }
        
     @Override
-    public void realizarAutoAtendimento() {
+    public void startAutoAtendimento() {
         System.out.println("Olá, seja bem-vindo ao Mybank!\n\nEscolha uma opção:\n");
         menuInicial();
     }
@@ -61,14 +63,13 @@ public class AutoAtendimento implements IAutoAtendimento {
     }
 
     private void acessarConta() {
-        // TODO Auto-generated method stub
         System.out.println("\nAcessando cliente:");
         
         System.out.print("\t-> Insira o seu CPF/CNPJ: ");
         scanner.nextLine(); // consumir \n
         var cpf_cnpj = scanner.next();
 
-        var cliente = banco.obterCliente(cpf_cnpj, false);
+        var cliente = banco.getCliente(cpf_cnpj, false);
 
         if(cliente == null) {
             System.out.println("Acesso de conta encerrado.\n");
@@ -79,20 +80,62 @@ public class AutoAtendimento implements IAutoAtendimento {
         scanner.nextLine(); // consumir \n
         var numeroConta = scanner.nextLine();
 
-        var conta = banco.obterConta(cliente, numeroConta, false);
+        var conta = banco.getConta(cliente, numeroConta, false);
         if(conta == null) {
             System.out.println("Acesso de conta encerrada.\n");
             return;
         }
+        this.conta = conta;
+        
+        System.out.println("\nAcesso realizado com sucesso!");
+        System.out.println(
+            String.format(
+                "\nOlá, cliente %s! Selecione uma opção abaixo:\n",
+                conta.getCliente().getNome()
+            )
+        );
 
         var continuarOperacao = true;
         var opcoes = new StringBuilder();
 
-        opcoes.append("1 -> Acessar conta\n");
-        opcoes.append("2 -> Criar conta\n");
-        opcoes.append("3 -> Criar cliente\n");
+        opcoes.append("1 -> Exibir informações gerais\n");
+        opcoes.append("2 -> Exibir extrato\n"); 
+        opcoes.append("3 -> Realizar depósito\n");
+        opcoes.append("4 -> Realizar saque\n");
+        opcoes.append("5 -> Realizar transferência\n");  
         opcoes.append("0 -> Encerrar atendimento\n");
         opcoes.append("Digite a opção: ");
+
+        while(continuarOperacao) {
+            System.out.print(opcoes.toString());
+            var opcao = scanner.next();
+
+            switch(opcao) {
+                case "0" -> {
+                    continuarOperacao = false;
+                    System.out.println("\nAtendimento de conta encerrado.");
+                    break;
+                }
+                case "1" -> {
+                    exibirInformacoesGerais();
+                }
+                case "2" -> {
+                    exibirExtrato();
+                }
+                case "3" -> {
+                    realizarDeposito();
+                }
+                case "4" -> {
+                    realizarSaque();
+                }
+                case "5" -> {
+                    realizarTransferencia();
+                }
+                default -> {
+                    System.out.println("Selecione uma opção válida!\n");
+                }
+            }
+        }
     }
 
     private void criarConta() {
@@ -102,7 +145,7 @@ public class AutoAtendimento implements IAutoAtendimento {
         scanner.nextLine(); // consumir \n
         var cpf_cnpj = scanner.next();
 
-        var cliente = banco.obterCliente(cpf_cnpj, false);
+        var cliente = banco.getCliente(cpf_cnpj, false);
         if(cliente == null) {
             System.out.println("\nCriação encerrada.\n");
             return;
@@ -112,7 +155,7 @@ public class AutoAtendimento implements IAutoAtendimento {
         scanner.nextLine(); // consumir \n
         var numeroConta = scanner.nextLine();
 
-        var conta = banco.obterConta(cliente, numeroConta, true);
+        var conta = banco.getConta(cliente, numeroConta, true);
         if(conta != null) {
             System.out.println("\nJá existe uma conta criada para o cliente selecionado.\nCriação encerrada.\n");
             return;
@@ -140,10 +183,10 @@ public class AutoAtendimento implements IAutoAtendimento {
             }
         }
 
-        System.out.print("Insira um valor inicial (0 ou menor que zero para iniciar sem valor): R$ ");
+        System.out.print("\t-> Insira um valor inicial (0 ou menor que zero para iniciar sem valor): R$ ");
         var valorInicial = scanner.nextFloat();
         
-        banco.criarConta(cliente, numeroConta, tipoConta, valorInicial);
+        banco.addConta(cliente, numeroConta, tipoConta, valorInicial);
 
         System.out.println("\nConta criada com sucesso!");
     }
@@ -156,7 +199,7 @@ public class AutoAtendimento implements IAutoAtendimento {
         scanner.nextLine(); // consumir \n
         var cpf_cnpj = scanner.nextLine();
 
-        var cliente = banco.obterCliente(cpf_cnpj, true);
+        var cliente = banco.getCliente(cpf_cnpj, true);
         if(cliente != null) {
             System.out.println("\nJá existe um cliente com esse CPF/CNPJ cadastrado.\nCadastro encerrado.");
             return;
@@ -186,34 +229,56 @@ public class AutoAtendimento implements IAutoAtendimento {
             return;
         }
 
-        banco.cadastrarCliente(cpf_cnpj, nome, email);
+        banco.addCliente(cpf_cnpj, nome, email);
         
         System.out.println(barras + "\n");
         System.out.println("Cliente cadastrado com sucesso!\n");
     }
 
     private void realizarDeposito() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'realizarDeposito'");
+        System.out.print("\t-> Insira o valor que deseja realizar o depósito: R$ ");
+        var value = scanner.nextFloat();
+
+        var retorno = conta.setDeposito(value) ? "\t-> Depósito realizado com sucesso.\n" : "Erro ao realizar depósito.\n";
+        System.out.println(retorno);
     }
 
     private void realizarSaque() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'realizarSaque'");
+        System.out.print("\t-> Insira o valor que deseja realizar o saque: R$ ");
+        var value = scanner.nextFloat();
+
+        var retorno = conta.setSaque(value) ? "\t-> Saque realizado com sucesso.\n" : "Erro ao realizar saque.\n";
+        System.out.println(retorno);
     }
 
     private void realizarTransferencia() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'realizarTransferencia'");
+        // TODO: Autogenerated method stub
+        System.out.print("Insira o CPF/CNPJ do proprietário: ");
+        scanner.nextLine(); // consumir \n
+        var cpf_cnpj_proprietario = scanner.nextLine();
+
+        System.out.print("Insira o número da conta do proprietário: ");
+        var numeroConta = scanner.nextLine();
+
+        System.out.print("Insira o valor a ser transferido: R$ ");
+        var value = scanner.nextFloat();
+
+        var retorno = 
+            conta.setTransferencia(cpf_cnpj_proprietario, numeroConta, value)
+            ? "\t-> Transferência realizada com sucesso.\n"
+            : "Erro ao realizar transferência.\n";
+        System.out.println(retorno);
     }
 
     private void exibirExtrato() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'exibirExtrato'");
+        var extrato = conta.getExtrato();
+
+        System.out.println("\nExibindo extratos:");
+        System.out.println(extrato);
     }
 
     private void exibirInformacoesGerais() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'exibirInformacoesGerais'");
+        var infoGerais = conta.getInformacoesGerais();
+        System.out.println(infoGerais);
     }
 }

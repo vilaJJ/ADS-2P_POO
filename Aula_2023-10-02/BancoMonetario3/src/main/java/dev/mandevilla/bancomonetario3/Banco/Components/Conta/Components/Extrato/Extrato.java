@@ -18,7 +18,7 @@ public class Extrato implements IExtrato {
 
     // Métodos
     @Override
-    public String obter() {
+    public String get() {
         var extrato = new StringBuilder();        
         
         var id = String.format("\nExtrato - Identificador #%d\n", this.id);

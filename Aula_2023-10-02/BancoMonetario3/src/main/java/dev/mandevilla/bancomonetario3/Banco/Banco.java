@@ -26,7 +26,7 @@ public class Banco implements IBanco {
     }
 
     @Override
-    public int indiceConta(Cliente cliente, String numeroConta) {
+    public int getIndiceConta(Cliente cliente, String numeroConta) {
         var indice = -1;
         for (Conta conta : contas) {
             indice += 1;
@@ -40,7 +40,7 @@ public class Banco implements IBanco {
     }
 
     @Override
-    public Cliente obterCliente(String cpf_cnpj, boolean ignorarMensagens) {
+    public Cliente getCliente(String cpf_cnpj, boolean ignorarMensagens) {
         for (Cliente cliente : clientes) {
             if(cliente.getCpf_cnpj().equals(cpf_cnpj)){
                 return cliente;
@@ -55,8 +55,8 @@ public class Banco implements IBanco {
     }
 
     @Override
-    public Conta obterConta(Cliente cliente, String numeroConta, boolean ignorarMensagens) {
-        var indice = indiceConta(cliente, numeroConta);
+    public Conta getConta(Cliente cliente, String numeroConta, boolean ignorarMensagens) {
+        var indice = getIndiceConta(cliente, numeroConta);
 
         if(indice < 0) {
             if(ignorarMensagens == false) {
@@ -78,8 +78,8 @@ public class Banco implements IBanco {
     }
     
     @Override
-    public boolean apagarConta(Cliente cliente, String numeroConta) {
-        var indice = indiceConta(cliente, numeroConta);
+    public boolean deleteConta(Cliente cliente, String numeroConta) {
+        var indice = getIndiceConta(cliente, numeroConta);
 
         if(indice < 0) {
             System.out.println("Não foi possível encontrar a conta. Tente novamente.");
@@ -91,7 +91,7 @@ public class Banco implements IBanco {
     }
 
     @Override
-    public boolean cadastrarCliente(String cpf_cnpj, String nome, String email) {
+    public boolean addCliente(String cpf_cnpj, String nome, String email) {
         for (Cliente cliente : clientes) {
             if(cliente.getCpf_cnpj() == cpf_cnpj){
                 System.out.println("Já existe um cliente com o CPF/CNPJ cadastrado no Banco.");
@@ -106,7 +106,7 @@ public class Banco implements IBanco {
     }
 
     @Override
-    public boolean criarConta(Cliente cliente, String numeroConta, TipoConta tipoConta, float valorInicial) {
+    public boolean addConta(Cliente cliente, String numeroConta, TipoConta tipoConta, float valorInicial) {
         for (Conta conta : contas) {
             if(conta.getNumeroConta() == numeroConta) {
                 System.out.println("O número de conta já existe.");
@@ -128,7 +128,7 @@ public class Banco implements IBanco {
     }
 
     @Override
-    public Taxas obterTaxas() {
+    public Taxas getTaxas() {
         return taxas;
     }
 }
