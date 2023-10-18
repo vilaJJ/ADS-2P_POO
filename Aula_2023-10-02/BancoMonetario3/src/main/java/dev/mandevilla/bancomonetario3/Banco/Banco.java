@@ -5,7 +5,7 @@ import java.util.List;
 
 import dev.mandevilla.bancomonetario3.Banco.Components.Cliente.Cliente;
 import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Conta;
-import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Enums.TipoConta;
+import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Enums.TipoConta.TipoConta;
 import dev.mandevilla.bancomonetario3.Banco.Components.Taxa.Taxas;
 import dev.mandevilla.bancomonetario3.Banco.Interfaces.IBanco;
 

@@ -1,7 +1,7 @@
 package dev.mandevilla.bancomonetario3.Banco.Components.Conta.Components.Extrato;
 
 import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Components.Extrato.Interfaces.IExtrato;
-import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Enums.TipoOperacao;
+import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Enums.TipoOperacao.TipoOperacao;
 
 public class Extrato implements IExtrato {
     private final int id;
@@ -22,7 +22,7 @@ public class Extrato implements IExtrato {
         var extrato = new StringBuilder();        
         
         var id = String.format("\nExtrato - Identificador #%d\n", this.id);
-        var tipoOperacao = String.format("\nOperação: %s", this.tipoOperacao.toString());
+        var tipoOperacao = String.format("\nOperação: %s", this.tipoOperacao.getName());
         var valorOperacao = String.format("\nValor da operação: R$ %.2f", this.valorOperacao);
         var saldo = String.format("\n\nSaldo após a operação: R$ %.2f", this.saldo);
         var linha_finalizar = "\n----------------------------------------";

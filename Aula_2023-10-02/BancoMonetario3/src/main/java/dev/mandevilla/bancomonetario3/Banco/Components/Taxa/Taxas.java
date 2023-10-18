@@ -1,6 +1,6 @@
 package dev.mandevilla.bancomonetario3.Banco.Components.Taxa;
 
-import dev.mandevilla.bancomonetario3.Banco.Components.Taxa.Enums.TiposTaxa;
+import dev.mandevilla.bancomonetario3.Banco.Components.Taxa.Enums.TiposTaxa.TiposTaxa;
 import dev.mandevilla.bancomonetario3.Banco.Components.Taxa.Interfaces.ITaxas;
 
 public class Taxas implements ITaxas {

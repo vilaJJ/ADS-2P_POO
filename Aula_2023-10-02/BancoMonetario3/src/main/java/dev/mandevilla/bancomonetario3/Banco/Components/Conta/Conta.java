@@ -6,10 +6,10 @@ import java.util.List;
 import dev.mandevilla.bancomonetario3.Banco.Banco;
 import dev.mandevilla.bancomonetario3.Banco.Components.Cliente.Cliente;
 import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Components.Extrato.Extrato;
-import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Enums.TipoConta;
-import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Enums.TipoOperacao;
+import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Enums.TipoConta.TipoConta;
+import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Enums.TipoOperacao.TipoOperacao;
 import dev.mandevilla.bancomonetario3.Banco.Components.Conta.Interfaces.IConta;
-import dev.mandevilla.bancomonetario3.Banco.Components.Taxa.Enums.TiposTaxa;
+import dev.mandevilla.bancomonetario3.Banco.Components.Taxa.Enums.TiposTaxa.TiposTaxa;
 
 public class Conta implements IConta {
     private final Banco banco;
@@ -132,7 +132,7 @@ public class Conta implements IConta {
 
         contaDestinatario.saldo += value;
 
-        var id_operacaoDest = extratos.size() + 1;
+        var id_operacaoDest = contaDestinatario.extratos.size() + 1;
         var extratoDest = new Extrato(id_operacaoDest, TipoOperacao.TransferenciaDestinatario, value, contaDestinatario.saldo);
         contaDestinatario.extratos.add(extratoDest);
 
@@ -170,7 +170,7 @@ public class Conta implements IConta {
         var taxaSaque = taxasBanco.getValorTaxa(TiposTaxa.Saque);
 
         value += taxaSaque;
-        saldo -= value + taxaSaque;
+        saldo -= value;
 
         var id_operacao = extratos.size() + 1;
         var extrato = new Extrato(id_operacao, TipoOperacao.Saque, value, saldo);
