@@ -15,11 +15,11 @@ public class Banco {
     
     public Banco(){
         taxaSaque = 5;
-        contasBancarias = new ArrayList();
+        contasBancarias = new ArrayList<>();
     }
     public Banco(float taxaSaque){
         this.taxaSaque = taxaSaque;
-        contasBancarias = new ArrayList();
+        contasBancarias = new ArrayList<>();
     }
     
     private ContaBancaria existeConta(int numeroConta){
@@ -40,6 +40,8 @@ public class Banco {
         
         if (existeConta(numeroConta) != null) {
             informacaoBanco("O número de conta já existe. Tente novamente com outro valor.\n");
+
+            scanner.close();
             return;
         }
         
@@ -64,6 +66,8 @@ public class Banco {
         
         contasBancarias.add(conta);
         System.out.println("\nConta criada com sucesso!");
+
+        scanner.close();
     }
     
     public void acessarContaBancaria() throws Exception{
@@ -71,8 +75,12 @@ public class Banco {
         
         System.out.print("Insira o número da conta: ");
         var numeroConta = scanner.nextInt();
-        
+
+        scanner.close();
+
         var conta = existeConta(numeroConta);
+
+        
         if (conta != null) {
             conta.controlarConta();
             return;

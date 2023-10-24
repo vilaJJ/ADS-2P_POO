@@ -38,5 +38,7 @@ public class SegundaQuestao {
         
         int maiorNumero = descobrirMaiorNumero(numeros);
         System.out.printf("Maior número inserido: %d", maiorNumero);
+
+        scanner.close();
     }
 }

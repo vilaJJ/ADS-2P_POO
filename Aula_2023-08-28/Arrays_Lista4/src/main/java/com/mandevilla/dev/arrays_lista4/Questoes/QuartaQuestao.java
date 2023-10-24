@@ -38,5 +38,7 @@ public class QuartaQuestao {
         
         System.out.println("\nApresentando nomes na ordem invertida de inserção:\n");
         inverterLista(nomes);
+
+        scanner.close();
     }
 }

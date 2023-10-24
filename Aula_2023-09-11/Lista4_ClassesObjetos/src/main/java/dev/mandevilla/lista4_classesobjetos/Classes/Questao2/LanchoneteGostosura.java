@@ -24,24 +24,6 @@ public class LanchoneteGostosura {
             setPesoTotal();
         }
         
-        public int getQuantidadeSanduiches(){
-            return this.quantidadeSanduiches;
-        }
-        public void setQuantidadeSanduiches(int value){
-            this.quantidadeSanduiches = value;
-        }
-        
-        public float getPesoUnitarioKG(){
-            return this.pesoUnitarioKG;
-        }
-        public void setPesoUnitarioKG(float value){
-            this.pesoUnitarioKG = value;
-            setPesoTotal();
-        }
-        
-        public int getFatiasPorSanduiche(){
-            return this.fatiasPorSanduiche;
-        }
         private void setFatiasPorSanduiche(int value){
             this.fatiasPorSanduiche = value;
             setPesoTotal();

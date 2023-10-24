@@ -34,5 +34,7 @@ public class PrimeiraQuestao {
         
         var media = mediaAritmetica(medias);
         System.out.println(String.format("Média: %.2f", media));
+
+        scanner.close();
     }
 }

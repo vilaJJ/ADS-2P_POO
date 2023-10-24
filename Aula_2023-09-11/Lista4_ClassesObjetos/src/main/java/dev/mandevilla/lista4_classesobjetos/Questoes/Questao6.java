@@ -33,5 +33,7 @@ public class Questao6 {
         var rf = new ReceitaFederal(nome, rendaMensal);
         
         System.out.println(rf.getRelatorioMensal());
+
+        scanner.close();
     }
 }

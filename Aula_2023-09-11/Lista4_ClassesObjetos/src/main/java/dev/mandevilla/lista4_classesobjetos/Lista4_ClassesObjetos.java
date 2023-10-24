@@ -58,5 +58,7 @@ public class Lista4_ClassesObjetos {
         catch (Exception ex){
             System.out.println(String.format("Erro na execução do programa. %s", ex.getMessage()));
         }
+
+        scanner.close();
     }
 }

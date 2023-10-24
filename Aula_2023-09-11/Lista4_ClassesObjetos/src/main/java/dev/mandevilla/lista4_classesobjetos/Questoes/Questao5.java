@@ -26,5 +26,7 @@ public class Questao5 {
         var granja = new GranjaFrangotech(quantidadeFrangos);
         
         System.out.println(granja.getRelatorioGastos());
+
+        scanner.close();
     }
 }

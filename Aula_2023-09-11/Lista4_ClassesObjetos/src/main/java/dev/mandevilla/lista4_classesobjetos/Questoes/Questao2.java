@@ -22,5 +22,7 @@ public class Questao2 {
         var lanchonete = new LanchoneteGostosura(qntdSanduiches);
         
         System.out.println(lanchonete.getRelatorioPeso());        
+
+        scanner.close();
     }
 }

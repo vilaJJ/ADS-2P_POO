@@ -48,5 +48,7 @@ public class Arrays_Lista4 {
         catch (Exception ex){
             System.out.println(String.format("Erro na execução do programa. %s", ex.getMessage()));
         }
+
+        scanner.close();
     }
 }

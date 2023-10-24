@@ -77,5 +77,7 @@ public class TerceiraQuestao {
         if(apresentarPessoas(pessoas, false) == 0){
             System.out.println("Não existem menores de idade cadastrados.");
         }
+
+        scanner.close();
     }
 }

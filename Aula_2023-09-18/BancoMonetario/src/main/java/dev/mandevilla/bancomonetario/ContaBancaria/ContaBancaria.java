@@ -22,7 +22,7 @@ public class ContaBancaria {
         this.numeroConta = numeroConta;
         this.nomeTitular = nome;
         saldo = 0.00f;
-        extratos = new ArrayList();
+        extratos = new ArrayList<>();
         
         scanner = new Scanner(System.in);
     }
@@ -36,7 +36,7 @@ public class ContaBancaria {
         this.numeroConta = numeroConta;
         this.nomeTitular = nome;
         saldo = saldoInicial;
-        extratos = new ArrayList();
+        extratos = new ArrayList<>();
         
         extratos.add(String.format(
                 "Operação: Depósito\nValor: R$ %.2f\nSaldo: R$ %.2f",

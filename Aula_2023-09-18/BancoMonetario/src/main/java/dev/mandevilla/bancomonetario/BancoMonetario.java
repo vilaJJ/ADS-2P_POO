@@ -42,5 +42,7 @@ public class BancoMonetario {
         catch (Exception ex){
             System.out.print("Erro interno.");
         }
+
+        scanner.close();
     }
 }

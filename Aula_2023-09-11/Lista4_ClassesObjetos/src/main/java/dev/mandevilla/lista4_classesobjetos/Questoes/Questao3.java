@@ -28,5 +28,7 @@ public class Questao3 {
                 termCelsius.getMedicao(),
                 termCelsius.getFahrenheit()
         ));
+
+        scanner.close();
     }
 }
