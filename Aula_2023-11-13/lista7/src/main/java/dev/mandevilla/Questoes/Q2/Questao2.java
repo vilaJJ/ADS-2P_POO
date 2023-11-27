@@ -21,6 +21,11 @@ public class Questao2 {
     public static void executar() {
         System.out.println("-----------------------------------");
         
+        /*
+         * O que acontece aqui é que as classes 'Cachorro' e 'Gato' herdam de 'Animal'.
+         * Apesar de a lista possuir instâncias de 'Cachorro' e 'Gato', também possui uma super instância de 'Animal'.
+         * Desta forma, com a lista do tipo 'Animal', conseguimos acessar as instâncias filhas, e utilizar os métodos herdados.
+         */
         for (Animal pet : pets) {
             pet.fazerSom();
         }
